@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>오늘의 브리프</title>
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css">
+<style>
+:root{
+  --bg:#F9FAFB;--card:#FFFFFF;--border:#ECEEF0;--line:#F2F4F6;
+  --t1:#191F28;--t2:#4E5968;--t3:#8B95A1;
+  --blue:#3182F6;--blue-bg:#E8F3FF;--shadow:0 1px 3px rgba(0,0,0,.04),0 1px 2px rgba(0,0,0,.05);
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--t1);
+  font-family:"Pretendard Variable",Pretendard,system-ui,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  font-size:15.5px;line-height:1.65;letter-spacing:-.01em;-webkit-font-smoothing:antialiased;overflow-wrap:anywhere}
+a{color:inherit;text-decoration:none}
+a:focus-visible{outline:2px solid var(--blue);outline-offset:2px;border-radius:6px}
+.container{max-width:720px;margin:0 auto;padding:16px 16px 64px}
+.hdr{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.86);backdrop-filter:saturate(180%) blur(12px);
+  border-bottom:1px solid var(--border);padding:14px 16px 0}
+.hdr-row{max-width:720px;margin:0 auto;display:flex;align-items:baseline;gap:10px}
+.hdr h1{font-size:20px;font-weight:700;margin:0;letter-spacing:-.02em}
+.hdr-date{font-size:13px;color:var(--t3);flex:none}
+.pills{max-width:720px;margin:0 auto;display:flex;gap:8px;overflow-x:auto;padding:12px 0;scrollbar-width:none;scroll-behavior:smooth}
+.pills::-webkit-scrollbar{display:none}
+.pills-wrap{max-width:720px;margin:0 auto;display:flex;align-items:center;gap:8px}
+.pills-wrap .pills{flex:1;min-width:0;margin:0}
+.pills-arrow{flex:none;display:inline-flex;align-items:center;justify-content:center;
+  width:32px;height:32px;padding:0;border:1px solid var(--border);border-radius:999px;background:var(--card);color:var(--t2);
+  cursor:pointer;transition:background .15s,color .15s}
+.pills-arrow:hover{background:var(--line);color:var(--t1)}
+.pills-arrow:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+.pills-arrow[hidden]{display:none}
+@media (hover:none){.pills-arrow{display:none}}
+.pill{flex:none;display:inline-flex;align-items:center;gap:6px;border:1px solid var(--border);background:var(--card);
+  font-size:14px;font-weight:600;padding:7px 13px;border-radius:999px;overflow-wrap:normal;transition:background .15s,color .15s}
+a.pill{color:var(--t2);text-decoration:none}
+a.pill:hover{background:var(--line);color:var(--t1)}
+.pill-dot{width:7px;height:7px;border-radius:50%;flex:none}
+.btn{display:inline-flex;align-items:center;justify-content:center;font:inherit;font-size:13.5px;font-weight:600;
+  padding:8px 14px;border-radius:10px;border:1px solid transparent;white-space:nowrap;overflow-wrap:normal;transition:background .15s,color .15s,opacity .15s}
+.btn-primary{background:var(--blue);color:var(--card)}
+.btn-primary:hover{opacity:.88}
+.btn-ghost{background:var(--line);color:var(--t2)}
+.btn-ghost:hover{background:var(--border);color:var(--t1)}
+.btn.mini{font-size:12.5px;padding:5px 10px;border-radius:8px}
+.ftr{text-align:center;color:var(--t3);font-size:12px;padding:24px 0 40px}
+.brief-page{margin:24px 0;scroll-margin-top:110px}
+.page-title{font-size:18px;font-weight:700;display:flex;align-items:center;gap:8px;margin:0 0 12px}
+.page-date{font-size:12px;font-weight:400;color:var(--t3);margin-left:auto;flex:none}
+.group-title{font-size:14px;font-weight:700;color:var(--t2);margin:16px 0 8px}
+.group-title:first-of-type{margin-top:0}
+.brief-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.brief-item{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:14px 16px;box-shadow:var(--shadow);min-width:0}
+.brief-title{display:block;font-size:16px;font-weight:600;line-height:1.45}
+a.brief-title:hover{color:var(--blue)}
+.brief-summary{margin:6px 0 0;color:var(--t2)}
+.brief-foot{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:10px}
+.brief-sources{font-size:13px;color:var(--t3);min-width:0}
+.brief-btns{display:flex;gap:6px;flex:none}
+.latest{margin:8px 0 20px}
+.latest a{color:var(--blue);font-weight:600}
+.brief-dates{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.brief-dates a{display:block;background:var(--card);border:1px solid var(--border);border-radius:14px;padding:12px 16px}
+.brief-dates a:hover{background:var(--line)}
+.empty{text-align:center;color:var(--t3);padding:48px 0}
+@media (max-width:480px){
+  .hdr{padding:12px 12px 0}
+  .hdr-row{gap:8px}
+  .hdr h1{font-size:18px}
+  .hdr-date{font-size:12px}
+  .container{padding:12px 12px 56px}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+@page{size:A4;margin:10mm}
+@media print{
+  .hdr,.btn,.ftr{display:none}
+  .pills-arrow{display:none}
+  body{background:#fff;font-size:9pt;line-height:1.4}
+  .container{max-width:none;padding:0}
+  .brief-page{margin:0;break-after:page;page-break-after:always}
+  .brief-page:last-child{break-after:auto;page-break-after:auto}
+  .brief-list{display:block;columns:2;column-gap:6mm}
+  .brief-item{break-inside:avoid;box-shadow:none;border-radius:0;border:0;border-bottom:1px solid var(--line);padding:1mm 0}
+  .brief-title{font-size:10pt}
+  .brief-summary{margin-top:.5mm}
+  .brief-foot{margin-top:.5mm}
+  .brief-sources{font-size:8pt}
+  .page-title{font-size:14pt;margin:0 0 2mm}
+  .group-title{font-size:10pt;margin:2mm 0 1mm;break-after:avoid}
+}
+</style>
+</head>
+<body>
+<header class="hdr">
+<div class="hdr-row"><h1>오늘의 브리프</h1></div>
+</header>
+<main class="container">
+<p class="latest"><a href="2026-10-17.html">최신 브리프 열기 (2026-10-17)</a></p>
+<ul class="brief-dates"><li><a href="2026-10-17.html">2026-10-17</a></li><li><a href="2026-10-16.html">2026-10-16</a></li><li><a href="2026-10-15.html">2026-10-15</a></li><li><a href="2026-10-14.html">2026-10-14</a></li><li><a href="2026-10-13.html">2026-10-13</a></li><li><a href="2026-10-12.html">2026-10-12</a></li><li><a href="2026-10-11.html">2026-10-11</a></li><li><a href="2026-10-10.html">2026-10-10</a></li><li><a href="2026-10-09.html">2026-10-09</a></li><li><a href="2026-10-08.html">2026-10-08</a></li><li><a href="2026-10-07.html">2026-10-07</a></li><li><a href="2026-10-06.html">2026-10-06</a></li><li><a href="2026-10-05.html">2026-10-05</a></li><li><a href="2026-10-04.html">2026-10-04</a></li><li><a href="2026-10-03.html">2026-10-03</a></li><li><a href="2026-10-02.html">2026-10-02</a></li><li><a href="2026-10-01.html">2026-10-01</a></li></ul>
+</main>
+</body>
+</html>
